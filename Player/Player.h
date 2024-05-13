@@ -17,7 +17,9 @@ protected:
     int experience;
     int level;
 public:
+    Player(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience);
     Player(const char* _name, int _health, int _attack, int _defense, int _speed);
+    //Player(const char*, int, int, int, int, int);
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
 

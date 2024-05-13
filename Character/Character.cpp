@@ -7,12 +7,34 @@
 Character::Character(const char* _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer) {
     strncpy(name, _name, sizeof(name) -1);
     name[sizeof(name) -1] = '\0';
+    experience = 0;
+    level = 1;
     health = _health;
     attack = _attack;
     defense = _defense;
     speed = _speed;
     isPlayer = _isPlayer;
     fleed = false;
+}
+
+void Character::gainExperience(int exp) {
+    experience += exp;
+    while (experience >= 100){
+        levelUp();
+        experience -=100;
+    }
+}
+
+void Character::levelUp() {
+    level++;
+}
+
+int Character::getExperience() {
+    return experience;
+}
+
+int Character::getLevel() {
+    return level;
 }
 
 void Character::setName(const char* _name) {

@@ -11,11 +11,13 @@ using namespace std;
 
 class Character {
 protected:
-    char name[50];
+    char name[30];
     int health;
     int attack;
     int defense;
     int speed;
+    int experience;
+    int level;
     bool isPlayer;
     bool fleed;
 
@@ -25,6 +27,10 @@ public:
     virtual void doAttack(Character *target) = 0;
     virtual void takeDamage(int damage) = 0;
 
+    void gainExperience(int exp);
+    int getExperience();
+    void levelUp();
+    int getLevel();
     void setName(const char*);
     const char* getName();
     void setHealth(int);

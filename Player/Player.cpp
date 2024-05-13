@@ -12,9 +12,9 @@ bool compareSpeed(Enemy *a, Enemy *b) {
     return a->getSpeed() > b->getSpeed();
 }
 
-Player::Player(const char* name, int health, int attack, int defense, int speed) : Character(name, health, attack, defense,
-                                                                                        speed, true) {
-    experience = 0;
+Player::Player(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience) : Character(_name, _health, _attack, _defense,
+                                                                                        _speed, true) {
+    experience = _experience;
     level = 1;
 }
 
@@ -60,12 +60,16 @@ void Player::levelUp() {
     setSpeed(getSpeed() + 5);
 }
 
-void Player::gainExperience(int exp) {
+/*void Player::gainExperience(int exp) {
     experience += exp;
     if (experience >= 100) {
         levelUp();
         experience = 0;
     }
+} */
+
+void Player::gainExperience(int exp) {
+    Character::gainExperience(exp);
 }
 
 Character *Player::getTarget(vector<Enemy *> enemies) {

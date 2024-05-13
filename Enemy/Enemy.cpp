@@ -7,13 +7,14 @@
 
 using namespace std;
 
-//TODO: Check the circular dependency
+
 int getRolledAttack(int attack) {
     int lowerLimit = attack * .80;
     return (rand() % (attack - lowerLimit)) + lowerLimit;
 }
 
-Enemy::Enemy(const char* name, int health, int attack, int defense, int speed) : Character(name, health, attack, defense, speed, false) {
+Enemy::Enemy(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience) : Character(_name, _health, _attack, _defense, _speed, false) {
+experience = _experience;
 }
 
 void Enemy::doAttack(Character *target) {
@@ -26,6 +27,7 @@ void Enemy::takeDamage(int damage) {
     setHealth(getHealth() - damage);
     if(getHealth() <= 0) {
         cout<<getName()<<" has died"<<endl;
+        gainExperience(experience);
     }
     else {
         cout<<getName()<<" has taken " << damage << " damage" << endl;

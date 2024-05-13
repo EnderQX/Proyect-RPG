@@ -13,7 +13,9 @@ class Player;
 
 class Enemy: public Character {
 public:
-    Enemy(const char*, int, int, int, int);
+    Enemy(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience);
+    Enemy(const char* _name, int _health, int _attack, int _defense, int _speed);
+    //Enemy(const char*, int, int, int, int, int);
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
     Character* getTarget(vector<Player*> teamMembers);
