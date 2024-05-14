@@ -16,12 +16,15 @@ class Player: public Character {
 protected:
     int experience;
     int level;
+    vector<Enemy*> enemies;
 public:
     Player(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience);
     Player(const char* _name, int _health, int _attack, int _defense, int _speed);
     //Player(const char*, int, int, int, int, int);
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
+    void distributeStatPointsToEnemies(vector<Enemy*>& enemies);
+
 
     Character* getTarget(vector<Enemy*> enemies);
 
@@ -30,7 +33,7 @@ public:
     void levelUp();
     void gainExperience(int);
 
-    //Podemos hacer que este vector sea polimorfico?
+
     Action takeAction(vector<Enemy*> enemies);
 
 };

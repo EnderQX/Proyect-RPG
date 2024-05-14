@@ -17,6 +17,7 @@ public:
     Enemy(const char* _name, int _health, int _attack, int _defense, int _speed);
     //Enemy(const char*, int, int, int, int, int);
     void doAttack(Character *target) override;
+    void levelUp();
     void takeDamage(int damage) override;
     Character* getTarget(vector<Player*> teamMembers);
     Action takeAction(vector<Player*> player);

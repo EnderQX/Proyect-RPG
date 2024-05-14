@@ -23,6 +23,13 @@ void Enemy::doAttack(Character *target) {
     target->takeDamage(trueDamage);
 }
 
+void Enemy::levelUp() {
+    setHealth(getHealth() + 10);
+    setAttack(getAttack() + 5);
+    setDefense(getDefense() + 5);
+    setSpeed(getSpeed() + 5);
+}
+
 void Enemy::takeDamage(int damage) {
     setHealth(getHealth() - damage);
     if(getHealth() <= 0) {

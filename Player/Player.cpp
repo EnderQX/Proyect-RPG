@@ -58,6 +58,8 @@ void Player::levelUp() {
     setAttack(getAttack() + 5);
     setDefense(getDefense() + 5);
     setSpeed(getSpeed() + 5);
+
+    distributeStatPointsToEnemies(enemies);
 }
 
 /*void Player::gainExperience(int exp) {
@@ -67,6 +69,13 @@ void Player::levelUp() {
         experience = 0;
     }
 } */
+
+void Player::distributeStatPointsToEnemies(vector<Enemy*>& enemies) {
+    for (Enemy* enemy : enemies) {
+        enemy->levelUp();
+    }
+}
+
 
 void Player::gainExperience(int exp) {
     Character::gainExperience(exp);
@@ -79,7 +88,7 @@ Character *Player::getTarget(vector<Enemy *> enemies) {
         cout << i << ". " << enemies[i]->getName() << endl;
     }
     cin >> targetIndex;
-    //TODO: Add input validation
+
     return enemies[targetIndex];
 }
 
